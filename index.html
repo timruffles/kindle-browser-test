@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+  <script src="zepto.js"></script>
+  <script>
+    var body = document.querySelector("body");
+    var results = [];
+    var bytes = 0;
+    var n = 0;
+    setInterval(function() {
+      $.ajax({ 
+        url: "http://www.reddit.com/.json?jsonp=?",
+        dataType: "jsonp",
+        success: function(data,s,xhr) {
+          n ++;
+          bytes += JSON.stringify(data).length;
+          results.push(data);
+          document.body.innerHTML = "Loaded " + n + " times," + " total data " + bytes;
+        }
+      })
+    },5000);
+  </script>
+</head>
+<body>
+</body>
